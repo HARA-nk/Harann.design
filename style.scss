@@ -1,0 +1,270 @@
+@use 'mixin' as *;
+@use 'variables' as *;
+@use 'header';
+@use 'modal';
+
+
+.hero {
+  width: 100%;
+  height: 640px;
+  background-color: $baseColor1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__title {
+    font-family: $sans, sans-serif;
+    line-height: 68px;
+  }
+
+  &__main {
+    font-size: 72px;
+    font-weight: 500;
+    color: $textColor1;
+  }
+
+  &__sub {
+    font-size: 56px;
+    font-weight: 400;
+    color: $textColor2;
+  }
+}
+.works {
+  width: 100%;
+  height: 1200px;
+  background-color: $baseColor2;
+  padding: 120px 0;
+  text-align: center;
+
+  &__title {
+    font-family: $sans, sans-serif;
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 56px;
+    color: $textColor1;
+    margin-bottom: 80px;
+  }
+
+  &__items {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    width: 349px;
+    text-align: left;
+
+    // 👇ここにリンクなし用の特別スタイルを追加♡
+    &.no-link img {
+      object-fit: contain;
+      width: 100%;
+      height: auto;
+      max-height: 264px;
+      background-color: #fff;
+      display: block;
+      margin: 0 auto;
+      border-radius: 8px; // 他の画像と合わせてね♡
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 264px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  &__label {
+    font-family: $serif;
+    font-size: 16px;
+    line-height: 28px;
+    color: $textColor1;
+    margin-top: 12px;
+  }
+}
+
+.about {
+  width: 100%;
+  height: 600px;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 20px 0;
+  background-color: $baseColor1;
+
+  &__title {
+    font-family: $sans, sans-serif;
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 56px;
+    color: $textColor1;
+    margin-bottom: 40px;
+  }
+
+  &__subtitle {
+    font-family: $serif, serif;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 24px;
+    margin-bottom: 40px;
+    color: $textColor1;
+  }
+
+  &__content {
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px; // コンテキスト1と2の間のスペース（お好みで♡）
+  }
+
+  &__text {
+    font-family: $serif, serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 28px;
+    color: $textColor1;
+  }
+}
+
+.contact {
+  width: 100%;
+  height: 480px;
+  max-width: 1440px;
+  margin: 0 auto;
+  background-color: $baseColor1;
+  padding: 120px 20px 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    font-family: $sans, sans-serif;
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 56px;
+    color: $textColor1;
+    margin-bottom: 60px;
+  }
+
+  &__message {
+    font-family: $serif, serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 28px;
+    color: $textColor1;
+    margin-bottom: 60px;
+  }
+
+  &__link {
+    font-size: 32px;
+    color: $textColor1;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $accentColor; // ← ホバーで映えさせてく♡
+    }
+  }
+}
+
+//レスポンシブ対応
+
+@include mq(sp) {
+  .hero {
+    height: 480px;
+
+    &__main {
+      font-size: 36px;
+    }
+
+    &__sub {
+      font-size: 24px;
+    }
+  }
+}
+
+@include mq(sp) {
+  .works {
+    height: auto;
+    padding: 60px 20px;
+
+    &__title {
+      font-size: 32px;
+      margin-bottom: 40px;
+    }
+
+    &__items {
+      gap: 24px;
+    }
+
+    &__item {
+      width: 100%; // 横幅いっぱいに
+    }
+
+    &__label {
+      font-size: 14px;
+    }
+  }
+}
+
+@include mq(sp) {
+  .about {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    padding: 60px 20px;
+
+    &__title {
+      font-size: 32px;
+      margin-bottom: 24px;
+    }
+
+    &__subtitle {
+      font-size: 18px;
+      line-height: 24px;
+      margin-bottom: 24px;
+    }
+
+    &__content {
+      width: 100%;
+      max-width: 100%;
+      gap: 24px;
+    }
+
+    &__text {
+      font-size: 14px;
+      line-height: 24px;
+    }
+  }
+}
+
+@include mq(sp) {
+  .contact {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    padding: 60px 20px;
+
+    &__title {
+      font-size: 32px;
+      margin-bottom: 40px;
+    }
+
+    &__message {
+      width: 100%;
+      max-width: 100%;
+      font-size: 14px;
+      margin-bottom: 40px;
+    }
+
+    &__link {
+      font-size: 28px;
+    }
+  }
+}
