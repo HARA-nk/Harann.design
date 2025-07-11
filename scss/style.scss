@@ -3,14 +3,67 @@
 @use 'header';
 @use 'modal';
 
+.ham {
+    display: flex;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    align-items: center;
+    z-index: 1100;
+  
+    @include mq(sp) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 64px; 
+      height: 64px;
+      box-sizing: border-box;
+      background-color: $overlay1;
+      position: fixed;
+      top: 0;
+      z-index: 1001; 
+    }
+
+    &.is-open {
+      @include mq(sp) {
+        z-index: 1000;
+      }
+    }
+
+
+    &-icon {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 4px;
+
+      .ham__border {
+        width: 24px;
+        height: 2px;
+        background-color: #fff;
+        border-radius: 9999px;
+      }
+    }
+
+    &__menu {
+      font-size: 10px;
+      color: #fff;
+    }
+  }
+  .ham.is-hidden {
+    display: none;
+    }
 
 .hero {
   width: 100%;
-  height: 640px;
+  height: calc(100vh - 64px);
   background-color: $baseColor1;
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 
   &__title {
     font-family: $sans, sans-serif;
@@ -20,7 +73,7 @@
   &__main {
     font-size: 72px;
     font-weight: 500;
-    color: $textColor1;
+    color: #333333; 
   }
 
   &__sub {
@@ -38,7 +91,7 @@
 
   &__title {
     font-family: $sans, sans-serif;
-    font-size: 48px;
+    font-size: 35px;
     font-weight: 500;
     line-height: 56px;
     color: $textColor1;
@@ -100,11 +153,11 @@
 
   &__title {
     font-family: $sans, sans-serif;
-    font-size: 48px;
+    font-size: 35px;
     font-weight: 500;
     line-height: 56px;
     color: $textColor1;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
   }
 
   &__subtitle {
@@ -119,8 +172,8 @@
   &__content {
     max-width: 800px;
     display: flex;
-    flex-direction: column;
-    gap: 32px; // コンテキスト1と2の間のスペース（お好みで♡）
+    flex-direction: column; 
+    gap: 0px; // コンテキスト1と2の間のスペース（お好みで♡）
   }
 
   &__text {
@@ -146,7 +199,7 @@
 
   &__title {
     font-family: $sans, sans-serif;
-    font-size: 48px;
+    font-size: 35px;
     font-weight: 500;
     line-height: 56px;
     color: $textColor1;
@@ -173,11 +226,29 @@
   }
 }
 
+// モーダルメニュー表示制御
+.modal-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2000;
+  background: rgba(0,0,0,0.7);
+
+  &.is-open {
+    display: flex; // モーダルを表示する状態
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 //レスポンシブ対応
 
 @include mq(sp) {
   .hero {
-    height: 480px;
+    height: calc(100vh - 64px); // ヘッダーの高さを引く
 
     &__main {
       font-size: 36px;
@@ -195,7 +266,7 @@
     padding: 60px 20px;
 
     &__title {
-      font-size: 32px;
+      font-size: 24px;
       margin-bottom: 40px;
     }
 
@@ -204,33 +275,39 @@
     }
 
     &__item {
-      width: 100%; // 横幅いっぱいに
+      width: 100%; 
+      margin-bottom: 24px;
     }
 
     &__label {
       font-size: 14px;
+      text-align: right;
     }
   }
 }
 
 @include mq(sp) {
   .about {
+    width: 100%;
+    max-width: 100%;
     height: auto;
     padding: 60px 20px;
 
     &__title {
-      font-size: 32px;
-      margin-bottom: 24px;
+      font-size: 24px;
+      margin-bottom: 0px;
     }
 
     &__subtitle {
-      font-size: 18px;
+      font-size: 16px;
       line-height: 24px;
-      margin-bottom: 24px;
+      margin-bottom: 40px;
     }
 
     &__content {
-      gap: 24px;
+      width: 100%;
+      max-width: 100%;
+      gap: 0px;
     }
 
     &__text {
@@ -242,17 +319,21 @@
 
 @include mq(sp) {
   .contact {
+    width: 100%;
+    max-width: 100%;
     height: auto;
     padding: 60px 20px;
 
     &__title {
-      font-size: 32px;
-      margin-bottom: 40px;
+      font-size: 24px;
+      margin-bottom: 10px;
     }
 
     &__message {
+      width: 100%;
+      max-width: 100%;
       font-size: 14px;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
     }
 
     &__link {

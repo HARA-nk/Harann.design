@@ -1,48 +1,29 @@
+// モーダルを開いたり閉じたりするための要素を取得
+const modalMenu = document.querySelector('.modal-menu'); // モーダル本体
+const modalOpen = document.querySelector('.ham'); // ハンバーガーメニュー
+const modalClose = document.querySelector('.modal-menu__close'); // 閉じるボタン（×）
+const modalLinks = document.querySelectorAll('.modal-menu__link'); // メニュー内のリンクたち
 
-const modalOpen = document.querySelector(".ham");
-const modalClose = document.querySelector(".close");
-const modalNavMenu = document.querySelector(".nav-menu");
+// モーダルを開く関数
+function openModal() {
+  modalMenu.classList.add('is-open'); // モーダルに「開く」クラスを追加
 
-modalOpen.addEventListener("click", () => {
-    console.log("click");
+}
 
-    gsap.fromTo(
-        ".modal",
-        0.5,
-        {
-            opacity:0
-        },
-        {
-            opacity:1,
-            display : 'block',
-        }
-    )   
-})
+// モーダルを閉じる関数
+function closeModal() {
+  modalMenu.classList.remove('is-open'); // 「開く」クラスを外す
+  document.body.style.overflow = ''; // スクロールを元に戻す
+ 
+}
 
-modalClose.addEventListener("click", () => {
-    gsap.fromTo(
-        ".modal",
-        0.5,
-        {
-            opacity: 1
-        },
-        {
-            opacity: 0,
-            display : 'none',
-        }
-    )   
-})
+// ハンバーガーメニューをクリックしたら開く
+modalOpen.addEventListener('click', openModal);
 
-modalNavMenu.addEventListener("click", () => {
-    gsap.fromTo(
-        ".modal",
-        0.5,
-        {
-            opacity: 1
-        },
-        {
-            opacity: 0,
-            display : 'none',
-        }
-    )  
-})
+// 「×」をクリックしたら閉じる
+modalClose.addEventListener('click', closeModal);
+
+// メニュー内リンクをクリックしたら閉じる
+modalLinks.forEach(link => {
+  link.addEventListener('click', closeModal);
+});

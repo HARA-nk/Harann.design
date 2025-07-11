@@ -17,7 +17,7 @@
 <meta name="google-site-verification" content="LcttqvykPTD6H1qkvBJ0Dob96t6INjjFh3SPlBoQ7Oc" />
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-    <link rel="manifest" href="manifest.json">
+    
     
     <!-- Clarity Analytics -->
     <script type="text/javascript" src="https://www.clarity.ms/tag/s995i89bj3"></script>  
@@ -41,8 +41,15 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-  
+    <!-- ハンバーガーメニュー -->
+  <div class="ham">
+          <div class="ham-icon">
+            <div class="ham__border"></div>
+            <div class="ham__border"></div>
+            <div class="ham__border"></div>
+          </div>
+          <div class="ham__menu">MENU</div>
+        </div>
     <!-- ヘッダー -->
     <header class="header">
         <nav class="nav">
@@ -54,25 +61,7 @@
             </ul>
             <a href="#" class="btn btn--fill"></a>
         </nav>
-        <div class="ham">
-          <div class="ham-icon">
-            <div class="ham__border"></div>
-            <div class="ham__border"></div>
-            <div class="ham__border"></div>
-          </div>
-          <div class="ham__menu">MENU</div>
-        </div>
-        <!-- モーダルメニュー -->
-        <div class="modal-menu" id="modalMenu">
-          <div class="modal-menu__content">
-            <button class="modal-menu__close" id="modalMenuClose" aria-label="メニューを閉じる">&times;</button>
-            <ul class="modal-menu__list">
-              <li><a href="#works" class="modal-menu__link">WORKS</a></li>
-              <li><a href="#about" class="modal-menu__link">ABOUT</a></li>
-              <li><a href="#contact" class="modal-menu__link">CONTACT</a></li>
-            </ul>
-          </div>
-        </div>
+        
     </header>
     <main>
         <!-- ヒーローエリア -->
@@ -89,7 +78,7 @@
       <a href="https://hara-nk.github.io/woodenstudio25/" target="_blank">
         <img src="img/banner1.jpg" alt="バナー1" class="works__img">
       </a>
-      <p class="works__label">WEBサイト</p>
+      <p class="works__label">架空のWEBサイト</p>
     </div>
     <div class="works__item">
       <a href="https://hachimaru.studio.site/" target="_blank">
@@ -107,15 +96,16 @@
  <!-- ABOUT -->
          <section class="about" id="about">
   <h2 class="about__title">ABOUT</h2>
-  <p class="about__subtitle">あなたの感性に輪郭を。</p>
+  <p class="about__subtitle">ヒアリングから納品まで、丁寧に、誠実に。</p>
   <div class="about__content">
     <p class="about__text">
-      さまざまな機関で相談の仕事に携わってきました。<br>
-      声に耳を傾け、言葉や形にするプロセスを大切にしています。
+      主役は、あなたの伝えたい気持ち。<br>
+      ご希望をうかがい、形にしていく過程を<br>
+      大切にしています。
     </p>
     <p class="about__text">
       視線の流れや読みやすさに配慮し、<br>
-      ご依頼いただく方の感性やアイデアが自然ととけこむような、<br>
+      ご依頼いただく方の感性やアイデアがとけこむような、<br>
       さりげなく心に残るプロダクトを目指します。
     </p>
   </div>
@@ -132,119 +122,17 @@
   </a>
 </section>
 
-<style>
-/* ...existing code... */
-.about__text {
-  font-size: 14px;
-}
-@media (max-width: 600px) {
-  .about__text {
-    font-size: 12px;
-  }
-  .nav-menu--pc {
-    display: none;
-  }
-  .header {
-    position: relative;
-  }
-  .ham {
-    display: flex;
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 0;
-    height: 100%;
-    align-items: center;
-    z-index: 1100;
-  }
-  .modal-menu {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    inset: 0;
-    background: rgba(0,0,0,0.7);
-    justify-content: center;
-    align-items: center;
-  }
-  .modal-menu.is-open {
-    display: flex;
-  }
-  .modal-menu__content {
-    background: #fff;
-    border-radius: 8px;
-    padding: 2rem 2.5rem;
-    min-width: 220px;
-    text-align: center;
-    position: relative;
-  }
-  .modal-menu__close {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.7rem;
-    background: none;
-    border: none;
-    font-size: 2rem;
-    color: #333;
-    cursor: pointer;
-  }
-  .modal-menu__list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  .modal-menu__link {
-    display: block;
-    padding: 1rem 0;
-    font-size: 1.2rem;
-    color: #222;
-    text-decoration: none;
-    border-bottom: 1px solid #eee;
-  }
-  .modal-menu__link:last-child {
-    border-bottom: none;
-  }
-}
-@media (min-width: 601px) {
-  .modal-menu {
-    display: none !important;
-  }
-}
-</style>
-
-<script src="js/main.js"></script>
-<script>
-// filepath: /Users/user/Desktop/Harann.portfolio/index.html (inline script for modal)
-document.addEventListener('DOMContentLoaded', () => {
-  const ham = document.querySelector('.ham');
-  const modal = document.getElementById('modalMenu');
-  const closeBtn = document.getElementById('modalMenuClose');
-  const modalLinks = document.querySelectorAll('.modal-menu__link');
-
-  function openModal() {
-    modal.classList.add('is-open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeModal() {
-    modal.classList.remove('is-open');
-    document.body.style.overflow = '';
-  }
-
-  if (ham && modal && closeBtn) {
-    ham.addEventListener('click', (e) => {
-      if (window.innerWidth <= 600) {
-        e.preventDefault();
-        openModal();
-      }
-    });
-    closeBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeModal();
-    });
-    modalLinks.forEach(link => {
-      link.addEventListener('click', closeModal);
-    });
-  }
-});
-</script>
+ <!-- モーダルメニュー -->
+        <div class="modal-menu" id="modalMenu" >
+          <div class="modal-menu__content">
+            <button class="modal-menu__close" id="modalMenuClose" aria-label="メニューを閉じる">&times;</button>
+            <ul class="modal-menu__list">
+              <li><a href="#works" class="modal-menu__link">WORKS</a></li>
+              <li><a href="#about" class="modal-menu__link">ABOUT</a></li>
+              <li><a href="#contact" class="modal-menu__link">CONTACT</a></li>
+            </ul>
+          </div>
+        </div>
+<script src="js/modal.js"></script>
 </body>
 </html>
