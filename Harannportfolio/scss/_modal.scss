@@ -1,0 +1,83 @@
+@use 'variables' as *;
+@use 'mixin' as *;
+
+.modal-menu {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+
+  &.is-open {
+    display: flex; // モーダルを表示する状態
+  }
+
+  .modal-menu__content {
+    background: #fff;
+    border-radius: 8px;
+    padding: 2rem 2.5rem;
+    min-width: 220px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+
+  &__close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.7rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #333;
+    cursor: pointer;
+
+    &:hover {
+      color: $accentColor;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__link {
+    display: block;
+    padding: 1rem 0;
+    font-size: 1.2rem;
+    color: #555;
+    text-decoration: none;
+    border-bottom: 1px solid #ddd;
+
+    &:hover {
+      color: $accentColor;
+      background-color: #f5f5f5;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+// ハンバーガーを非表示にするクラス
+.is-hidden {
+  display: none;
+}
+
+// メディアクエリ
+@media (min-width: 601px) {
+  .modal-menu {
+    display: none;
+  }
+
+  .modal-menu.is-open {
+    display: flex;
+  }
+}
