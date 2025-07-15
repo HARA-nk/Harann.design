@@ -227,6 +227,13 @@
       color: $accentColor; // ← ホバーで映えさせてく♡
     }
   }
+  .br-sp {
+    display: none;
+
+    @media screen and (max-width: 768px) {
+      display: inline;
+    }
+  }
 }
 
 // モーダルメニュー表示制御
